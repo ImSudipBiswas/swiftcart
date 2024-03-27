@@ -1,0 +1,12 @@
+node_modules
+build
+dist
+out
+coverage
+.vscode
+.next
+.turbo
+.git
+*.log
+*.tmp
+*.swp
