@@ -2,9 +2,14 @@
   "name": "ecommerce",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
     "lint": "turbo lint",
+    "dev": "turbo dev",
+    "dev:api": "turbo dev --filter api",
+    "build": "turbo build",
+    "build:api": "turbo build --filter api",
+    "db:studio": "turbo db:studio",
+    "db:generate": "turbo db:generate",
+    "db:push": "turbo db:push",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,mjs,cjs,yaml,md}\""
   },
   "devDependencies": {

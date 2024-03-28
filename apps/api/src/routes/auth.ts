@@ -1,10 +1,14 @@
 import { Router } from "express";
 
-import { signIn, signUp } from "../controllers/auth";
+import { upload } from "../middlewares/multer";
+import { signIn, signUp, verifiyEmail, signOut } from "../controllers/auth";
+import { authenticate } from "../middlewares/auth";
 
-const router = Router();
+const router: Router = Router();
 
-router.route("/sign-up").post(signUp);
+router.route("/sign-up").post(upload.single("image"), signUp);
+router.route("/verify-email/:token").post(verifiyEmail);
 router.route("/sign-in").post(signIn);
+router.route("/sign-out").post(authenticate, signOut);
 
 export default router;

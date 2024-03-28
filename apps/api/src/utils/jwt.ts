@@ -1,12 +1,10 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-
-dotenv.config();
+import { ACCESS_TOKEN_SECRET, EMAIL_VERIFICATION_SECRET, REFRESH_TOKEN_SECRET } from "./constants";
 
 const secretMap = {
-  refreshToken: { secret: process.env.REFRESH_TOKEN_SECRET!, expiresIn: "7d" },
-  accessToken: { secret: process.env.ACCESS_TOKEN_SECRET!, expiresIn: "15m" },
-  emailVerification: { secret: process.env.EMAIL_VERIFICATION_SECRET!, expiresIn: "5m" },
+  refreshToken: { secret: REFRESH_TOKEN_SECRET!, expiresIn: "7d" },
+  accessToken: { secret: ACCESS_TOKEN_SECRET!, expiresIn: "15m" },
+  emailVerification: { secret: EMAIL_VERIFICATION_SECRET!, expiresIn: "5m" },
 };
 
 export const generateToken = (

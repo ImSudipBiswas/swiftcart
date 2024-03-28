@@ -1,8 +1,7 @@
 import fs from "fs";
-import dotenv from "dotenv";
 import { v2 as cloudinary, type UploadApiOptions } from "cloudinary";
 
-dotenv.config();
+import { CLOUDINARY_CONFIG } from "./constants";
 
 type ResourceType = UploadApiOptions["resource_type"];
 type Folder = "profileImage";
@@ -19,11 +18,7 @@ type DeleteFromCloudinary = (
   resource_type?: ResourceType
 ) => Promise<boolean>;
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+cloudinary.config(CLOUDINARY_CONFIG);
 
 export const uploadFile: UploadToCloudinary = async (filePath, folder, resource_type = "auto") => {
   try {
