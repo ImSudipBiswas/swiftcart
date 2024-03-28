@@ -31,3 +31,11 @@ export const signInSchema = z.object({
     .string({ required_error: "password is required" })
     .min(6, "Password must be at least 6 characters long"),
 });
+
+export const updateUserSchema = z.object({
+  name: z.string({ required_error: "Name is required" }),
+  username: z
+    .string({ required_error: "Username is required" })
+    .min(3, "Username must be at least 3 characters long")
+    .toLowerCase(),
+});

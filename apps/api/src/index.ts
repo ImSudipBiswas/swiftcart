@@ -5,6 +5,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 
 import authRouter from "./routes/auth";
+import userRouter from "./routes/user";
 
 import { PORT, CORS_OPTIONS } from "./utils/constants";
 
@@ -20,5 +21,6 @@ app.use(cors(CORS_OPTIONS));
 app.use(morgan("dev"));
 
 app.use("/api/auth/v1", authRouter);
+app.use("/api/user/v1", userRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
