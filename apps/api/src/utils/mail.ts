@@ -24,7 +24,7 @@ export const sendEmailVerificationMail = async (
     html: `
       <h1>Confirm your email address</h1>
       <p>Click the link below to confirm your email address</p>
-      <a href="${host}/verify-email?token=${token}">Verify Email</a>
+      <a href="${host}/auth/verify-email?token=${token}">Verify Email</a>
     `,
   });
 

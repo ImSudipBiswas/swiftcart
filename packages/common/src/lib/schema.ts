@@ -5,10 +5,13 @@ export const throwZodError = (error: ZodError) => {
 };
 
 export const signUpSchema = z.object({
-  name: z.string({ required_error: "Name is required" }),
+  name: z
+    .string({ required_error: "Name is required" })
+    .max(50, "Name must be at most 50 characters long"),
   username: z
     .string({ required_error: "Username is required" })
     .min(3, "Username must be at least 3 characters long")
+    .max(50, "Username must be at most 50 characters long")
     .toLowerCase(),
   email: z
     .string({ required_error: "Email is required" })
@@ -16,7 +19,8 @@ export const signUpSchema = z.object({
     .toLowerCase(),
   password: z
     .string({ required_error: "password is required" })
-    .min(6, "Password must be at least 6 characters long"),
+    .min(6, "Password must be at least 6 characters long")
+    .max(50, "Password must be at most 50 characters long"),
   role: z.optional(
     z.enum(["USER", "ADMIN"], { invalid_type_error: "Invalid role" }).default("USER")
   ),
@@ -29,13 +33,21 @@ export const signInSchema = z.object({
     .toLowerCase(),
   password: z
     .string({ required_error: "password is required" })
-    .min(6, "Password must be at least 6 characters long"),
+    .min(6, "Password must be at least 6 characters long")
+    .max(50, "Password must be at most 50 characters long"),
 });
 
 export const updateUserSchema = z.object({
-  name: z.string({ required_error: "Name is required" }),
+  name: z
+    .string({ required_error: "Name is required" })
+    .max(50, "Name must be at most 50 characters long"),
   username: z
     .string({ required_error: "Username is required" })
     .min(3, "Username must be at least 3 characters long")
+    .max(50, "Username must be at most 50 characters long")
     .toLowerCase(),
 });
+
+export type SignUpSchema = z.infer<typeof signUpSchema>;
+export type SignInSchema = z.infer<typeof signInSchema>;
+export type UpdateUserSchema = z.infer<typeof updateUserSchema>;

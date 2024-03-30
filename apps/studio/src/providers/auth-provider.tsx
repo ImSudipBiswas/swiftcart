@@ -23,7 +23,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const value: AuthProviderState = {
     isLoading,
     user: data?.user || null,
-    isAuthenticated: !!data?.user,
+    isAuthenticated: !!(data?.user && data?.user.role === "ADMIN"),
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,4 +1,5 @@
 import { RequestHandler } from "express";
+import { signInSchema, signUpSchema, throwZodError } from "common/lib/schema";
 
 import { db } from "../utils/db";
 import { handler } from "../utils/api";
@@ -6,7 +7,6 @@ import { uploadFile } from "../utils/cloudinary";
 import { comparePassword, hashPassword } from "../utils/bcrypt";
 import { sendEmailVerificationMail } from "../utils/mail";
 import { decodeToken, generateToken } from "../utils/jwt";
-import { signInSchema, signUpSchema, throwZodError } from "../utils/schema";
 import { REFRESH_TOKEN_COOKIE_OPTIONS, ACCESS_TOKEN_COOKIE_OPTIONS } from "../utils/constants";
 
 export const signUp: RequestHandler = handler(async (req, res) => {
@@ -66,10 +66,10 @@ export const signUp: RequestHandler = handler(async (req, res) => {
     return res.status(500).json({ message: "Failed to send verification mail" });
   }
 
-  return res.status(201).json({ message: "Please check you email to continue" });
+  return res.status(201).json({ message: "Please check your email to continue" });
 });
 
-export const verifiyEmail: RequestHandler = handler(async (req, res) => {
+export const verifyEmail: RequestHandler = handler(async (req, res) => {
   const verificationToken = req.params.token;
   if (!verificationToken) {
     return res.status(400).json({ message: "Invalid token" });

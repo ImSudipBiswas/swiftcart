@@ -31,6 +31,9 @@ importers:
       cloudinary:
         specifier: ^2.0.3
         version: 2.1.0
+      common:
+        specifier: workspace:*
+        version: link:../../packages/common
       cookie-parser:
         specifier: ^1.4.6
         version: 1.4.6
@@ -101,24 +104,30 @@ importers:
 
   apps/studio:
     dependencies:
+      "@hookform/resolvers":
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.51.2)
       "@tanstack/react-query":
         specifier: ^5.28.9
         version: 5.28.9(react@18.2.0)
       axios:
         specifier: ^1.6.8
         version: 1.6.8
+      common:
+        specifier: workspace:*
+        version: link:../../packages/common
       react:
         specifier: ^18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.51.2
+        version: 7.51.2(react@18.2.0)
       react-router-dom:
         specifier: ^6.22.3
         version: 6.22.3(react-dom@18.2.0)(react@18.2.0)
-      ui:
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       "@tanstack/eslint-plugin-query":
         specifier: ^5.28.6
@@ -157,40 +166,23 @@ importers:
         specifier: ^5.2.0
         version: 5.2.7(@types/node@20.12.2)
 
-  packages/eslintconfig:
-    devDependencies:
-      "@typescript-eslint/eslint-plugin":
-        specifier: ^7.1.0
-        version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
-      "@typescript-eslint/parser":
-        specifier: ^7.1.0
-        version: 7.4.0(eslint@8.57.0)(typescript@5.4.3)
-      "@vercel/style-guide":
-        specifier: ^5.2.0
-        version: 5.2.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.3)
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
-      eslint-config-turbo:
-        specifier: ^1.12.4
-        version: 1.13.0(eslint@8.57.0)
-      eslint-plugin-only-warn:
-        specifier: ^1.1.0
-        version: 1.1.0
-      typescript:
-        specifier: ^5.3.3
-        version: 5.4.3
-
-  packages/tsconfig: {}
-
-  packages/ui:
+  packages/common:
     dependencies:
+      "@hookform/resolvers":
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.51.2)
       "@radix-ui/react-dropdown-menu":
         specifier: ^2.0.6
         version: 2.0.6(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-label":
+        specifier: ^2.0.2
+        version: 2.0.2(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
       "@radix-ui/react-slot":
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.73)(react@18.2.0)
+      "@radix-ui/react-toast":
+        specifier: ^1.1.5
+        version: 1.1.5(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -206,6 +198,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.51.2
+        version: 7.51.2(react@18.2.0)
       react-spinners:
         specifier: ^0.13.8
         version: 0.13.8(react-dom@18.2.0)(react@18.2.0)
@@ -215,6 +210,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.3)
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       "@types/node":
         specifier: ^20.11.30
@@ -240,6 +238,32 @@ importers:
       typescript:
         specifier: ^5.3.3
         version: 5.4.3
+
+  packages/eslintconfig:
+    devDependencies:
+      "@typescript-eslint/eslint-plugin":
+        specifier: ^7.1.0
+        version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
+      "@typescript-eslint/parser":
+        specifier: ^7.1.0
+        version: 7.4.0(eslint@8.57.0)(typescript@5.4.3)
+      "@vercel/style-guide":
+        specifier: ^5.2.0
+        version: 5.2.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.3)
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.0(eslint@8.57.0)
+      eslint-config-turbo:
+        specifier: ^1.12.4
+        version: 1.13.0(eslint@8.57.0)
+      eslint-plugin-only-warn:
+        specifier: ^1.1.0
+        version: 1.1.0
+      typescript:
+        specifier: ^5.3.3
+        version: 5.4.3
+
+  packages/tsconfig: {}
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -924,6 +948,17 @@ packages:
       }
     dev: false
 
+  /@hookform/resolvers@3.3.4(react-hook-form@7.51.2):
+    resolution:
+      {
+        integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==,
+      }
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.51.2(react@18.2.0)
+    dev: false
+
   /@humanwhocodes/config-array@0.11.14:
     resolution:
       {
@@ -1372,6 +1407,29 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@radix-ui/react-label@2.0.2(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-N5ehvlM7qoTLx7nWPodsPYPgMzA5WM8zZChQg8nyFJKnDO5WHdba1vv5/H6IO5LtJMfD2Q3wh1qHFGNtK0w3bQ==,
+      }
+    peerDependencies:
+      "@types/react": "*"
+      "@types/react-dom": "*"
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      "@types/react":
+        optional: true
+      "@types/react-dom":
+        optional: true
+    dependencies:
+      "@babel/runtime": 7.24.1
+      "@radix-ui/react-primitive": 1.0.3(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@types/react": 18.2.73
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@radix-ui/react-menu@2.0.6(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
     resolution:
       {
@@ -1563,6 +1621,40 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@radix-ui/react-toast@1.1.5(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-fRLn227WHIBRSzuRzGJ8W+5YALxofH23y0MlPLddaIpLpCDqdE0NZlS2NRQDRiptfxDeeCjgFIpexB1/zkxDlw==,
+      }
+    peerDependencies:
+      "@types/react": "*"
+      "@types/react-dom": "*"
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      "@types/react":
+        optional: true
+      "@types/react-dom":
+        optional: true
+    dependencies:
+      "@babel/runtime": 7.24.1
+      "@radix-ui/primitive": 1.0.1
+      "@radix-ui/react-collection": 1.0.3(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-compose-refs": 1.0.1(@types/react@18.2.73)(react@18.2.0)
+      "@radix-ui/react-context": 1.0.1(@types/react@18.2.73)(react@18.2.0)
+      "@radix-ui/react-dismissable-layer": 1.0.5(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-portal": 1.0.4(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-presence": 1.0.1(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-primitive": 1.0.3(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@radix-ui/react-use-callback-ref": 1.0.1(@types/react@18.2.73)(react@18.2.0)
+      "@radix-ui/react-use-controllable-state": 1.0.1(@types/react@18.2.73)(react@18.2.0)
+      "@radix-ui/react-use-layout-effect": 1.0.1(@types/react@18.2.73)(react@18.2.0)
+      "@radix-ui/react-visually-hidden": 1.0.3(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@types/react": 18.2.73
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.73)(react@18.2.0):
     resolution:
       {
@@ -1667,6 +1759,29 @@ packages:
       "@radix-ui/react-use-layout-effect": 1.0.1(@types/react@18.2.73)(react@18.2.0)
       "@types/react": 18.2.73
       react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-visually-hidden@1.0.3(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-D4w41yN5YRKtu464TLnByKzMDG/JlMPHtfZgQAu9v6mNakUqGUI9vUrfQKz8NK41VMm/xbZbh76NUTVtIYqOMA==,
+      }
+    peerDependencies:
+      "@types/react": "*"
+      "@types/react-dom": "*"
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      "@types/react":
+        optional: true
+      "@types/react-dom":
+        optional: true
+    dependencies:
+      "@babel/runtime": 7.24.1
+      "@radix-ui/react-primitive": 1.0.3(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+      "@types/react": 18.2.73
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@radix-ui/rect@1.0.1:
@@ -6784,6 +6899,18 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hook-form@7.51.2(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-y++lwaWjtzDt/XNnyGDQy6goHskFualmDlf+jzEZvjvz6KWDf7EboL7pUvRCzPTJd0EOPpdekYaQLEvvG6m6HA==,
+      }
+    engines: { node: ">=12.22.0" }
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

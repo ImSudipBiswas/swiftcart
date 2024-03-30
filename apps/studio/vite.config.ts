@@ -12,18 +12,7 @@ export default defineConfig({
     // Reference: https://github.com/vercel/turbo/discussions/620#discussioncomment-2136195
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "@ui": path.resolve(__dirname, "../../packages/ui/src"),
+      "@common": path.resolve(__dirname, "../../packages/common/src"),
     },
-    // alias: [
-    //   {
-    //     find: "@",
-    //     replacement: path.resolve(__dirname, "./src"),
-    //   },
-    //
-    //   {
-    //     find: "@ui",
-    //     replacement: path.resolve(__dirname, "../../packages/ui/src"),
-    //   },
-    // ],
   },
 });

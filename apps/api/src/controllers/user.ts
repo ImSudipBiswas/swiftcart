@@ -1,9 +1,9 @@
 import { RequestHandler } from "express";
+import { throwZodError, updateUserSchema } from "common/lib/schema";
 
 import { db } from "../utils/db";
 import { handler } from "../utils/api";
 import { deleteFile, uploadFile } from "../utils/cloudinary";
-import { throwZodError, updateUserSchema } from "../utils/schema";
 
 const select = { id: true, name: true, username: true, email: true, image: true, role: true };
 
