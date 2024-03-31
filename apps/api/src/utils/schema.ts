@@ -47,7 +47,3 @@ export const updateUserSchema = z.object({
     .max(50, "Username must be at most 50 characters long")
     .toLowerCase(),
 });
-
-export type SignUpSchema = z.infer<typeof signUpSchema>;
-export type SignInSchema = z.infer<typeof signInSchema>;
-export type UpdateUserSchema = z.infer<typeof updateUserSchema>;

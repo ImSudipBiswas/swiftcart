@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { throwZodError, updateUserSchema } from "common/lib/schema";
+import { throwZodError, updateUserSchema } from "../utils/schema";
 
 import { db } from "../utils/db";
 import { handler } from "../utils/api";

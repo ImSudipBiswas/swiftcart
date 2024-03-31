@@ -1,9 +1,10 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Toaster } from "common/components/toaster";
+import { Toaster } from "ui/components/toaster";
 
 import { useAuth } from "@/hooks";
 
+const NotFound = lazy(() => import("@/pages/not-found"));
 const Loading = lazy(() => import("@/components/loading"));
 const ProtectedRoute = lazy(() => import("@/components/protected-route"));
 
@@ -15,7 +16,7 @@ const AuthVerifyEmailPage = lazy(() => import("@/pages/auth/verify-email"));
 const DashboardOverviewPage = lazy(() => import("@/pages/dashboard"));
 
 export default function Router() {
-  const { isLoading, isAuthenticated } = useAuth();
+  const { isLoading } = useAuth();
 
   if (isLoading) return <Loading />;
 
@@ -24,15 +25,17 @@ export default function Router() {
       <Toaster />
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isAuthRoute={true} />}>
+          <Route path="*" element={<NotFound />} />
+          <Route element={<ProtectedRoute isAuthRoute={true} />}>
             <Route path="/auth/sign-in" element={<AuthSignInPage />} />
             <Route path="/auth/sign-up" element={<AuthSignUpPage />} />
             <Route path="/auth/message" element={<AuthMessagePage />} />
             <Route path="/auth/verify-email" element={<AuthVerifyEmailPage />} />
           </Route>
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+          <Route element={<ProtectedRoute />}>
             <Route path="/" element={<DashboardOverviewPage />} />
           </Route>
+          {/* <Route path="/request-role-change" element={<RequestRoleChangePage />} /> */}
         </Routes>
       </Suspense>
     </BrowserRouter>

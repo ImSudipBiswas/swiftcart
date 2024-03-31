@@ -1,16 +1,15 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "@/hooks";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children?: React.ReactNode;
   isAuthRoute?: boolean;
-  isAuthenticated: boolean;
 }
 
-const ProtectedRoute = ({
-  children,
-  isAuthRoute = false,
-  isAuthenticated = false,
-}: ProtectedRouteProps) => {
+export default function ProtectedRoute({ children, isAuthRoute = false }: ProtectedRouteProps) {
+  const { isAdmin, isAuthenticated } = useAuth();
+  const { pathname } = useLocation();
+
   if (isAuthRoute && isAuthenticated) {
     return <Navigate to="/" replace />;
   }
@@ -19,7 +18,13 @@ const ProtectedRoute = ({
     return <Navigate to="/auth/sign-in" replace />;
   }
 
-  return children ? <>{children}</> : <Outlet />;
-};
+  if (isAdmin && pathname === "/request-role-change") {
+    return <Navigate to="/" replace />;
+  }
 
-export default ProtectedRoute;
+  if (!isAuthRoute && isAuthenticated && !isAdmin) {
+    return <Navigate to="/request-role-change" replace />;
+  }
+
+  return children ? <>{children}</> : <Outlet />;
+}

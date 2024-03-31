@@ -9,7 +9,7 @@
     "build": "turbo build",
     "build:api": "turbo build --filter api",
     "build:studio": "turbo build --filter studio",
-    "ui:add": "pnpm --filter common ui:add",
+    "ui:add": "pnpm --filter ui ui:add",
     "db:studio": "turbo db:studio",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push",

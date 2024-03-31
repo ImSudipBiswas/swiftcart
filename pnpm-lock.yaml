@@ -31,9 +31,6 @@ importers:
       cloudinary:
         specifier: ^2.0.3
         version: 2.1.0
-      common:
-        specifier: workspace:*
-        version: link:../../packages/common
       cookie-parser:
         specifier: ^1.4.6
         version: 1.4.6
@@ -113,9 +110,6 @@ importers:
       axios:
         specifier: ^1.6.8
         version: 1.6.8
-      common:
-        specifier: workspace:*
-        version: link:../../packages/common
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -128,6 +122,12 @@ importers:
       react-router-dom:
         specifier: ^6.22.3
         version: 6.22.3(react-dom@18.2.0)(react@18.2.0)
+      ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       "@tanstack/eslint-plugin-query":
         specifier: ^5.28.6
@@ -166,7 +166,33 @@ importers:
         specifier: ^5.2.0
         version: 5.2.7(@types/node@20.12.2)
 
-  packages/common:
+  packages/eslintconfig:
+    devDependencies:
+      "@typescript-eslint/eslint-plugin":
+        specifier: ^7.1.0
+        version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
+      "@typescript-eslint/parser":
+        specifier: ^7.1.0
+        version: 7.4.0(eslint@8.57.0)(typescript@5.4.3)
+      "@vercel/style-guide":
+        specifier: ^5.2.0
+        version: 5.2.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.3)
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.0(eslint@8.57.0)
+      eslint-config-turbo:
+        specifier: ^1.12.4
+        version: 1.13.0(eslint@8.57.0)
+      eslint-plugin-only-warn:
+        specifier: ^1.1.0
+        version: 1.1.0
+      typescript:
+        specifier: ^5.3.3
+        version: 5.4.3
+
+  packages/tsconfig: {}
+
+  packages/ui:
     dependencies:
       "@hookform/resolvers":
         specifier: ^3.3.4
@@ -238,32 +264,6 @@ importers:
       typescript:
         specifier: ^5.3.3
         version: 5.4.3
-
-  packages/eslintconfig:
-    devDependencies:
-      "@typescript-eslint/eslint-plugin":
-        specifier: ^7.1.0
-        version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
-      "@typescript-eslint/parser":
-        specifier: ^7.1.0
-        version: 7.4.0(eslint@8.57.0)(typescript@5.4.3)
-      "@vercel/style-guide":
-        specifier: ^5.2.0
-        version: 5.2.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.3)
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
-      eslint-config-turbo:
-        specifier: ^1.12.4
-        version: 1.13.0(eslint@8.57.0)
-      eslint-plugin-only-warn:
-        specifier: ^1.1.0
-        version: 1.1.0
-      typescript:
-        specifier: ^5.3.3
-        version: 5.4.3
-
-  packages/tsconfig: {}
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -2311,11 +2311,14 @@ packages:
       }
     dev: true
 
-  /@types/mime@3.0.4:
+  /@types/mime@4.0.0:
     resolution:
       {
-        integrity: sha512-iJt33IQnVRkqeqC7PzBHPTC6fDlRNRW8vjrgqtScAhrmMwe8c4Eo7+fUGTa+XdWrpEgpyKWMYmi2dIwMAYRzPw==,
+        integrity: sha512-5eEkJZ/BLvTE3vXGKkWlyTSUVZuzj23Wj8PoyOq2lt5I3CYbiLBOPb3XmCW6QcuOibIUE6emHXHt9E/F/rCa6w==,
       }
+    deprecated: This is a stub types definition. mime provides its own type definitions, so you do not need this installed.
+    dependencies:
+      mime: 4.0.1
     dev: true
 
   /@types/morgan@1.9.9:
@@ -2423,7 +2426,7 @@ packages:
       }
     dependencies:
       "@types/http-errors": 2.0.4
-      "@types/mime": 3.0.4
+      "@types/mime": 4.0.0
       "@types/node": 20.12.2
     dev: true
 
@@ -2864,7 +2867,7 @@ packages:
       eslint-plugin-tsdoc: 0.2.17
       eslint-plugin-unicorn: 48.0.1(eslint@8.57.0)
       prettier: 3.2.5
-      prettier-plugin-packagejson: 2.4.13(prettier@3.2.5)
+      prettier-plugin-packagejson: 2.4.14(prettier@3.2.5)
       typescript: 5.4.3
     transitivePeerDependencies:
       - eslint-import-resolver-node
@@ -3211,7 +3214,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001603
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -3347,7 +3350,7 @@ packages:
     engines: { node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7 }
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001600
+      caniuse-lite: 1.0.30001603
       electron-to-chromium: 1.4.722
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
@@ -3421,10 +3424,10 @@ packages:
       }
     engines: { node: ">= 6" }
 
-  /caniuse-lite@1.0.30001600:
+  /caniuse-lite@1.0.30001603:
     resolution:
       {
-        integrity: sha512-+2S9/2JFhYmYaDpZvo0lKkfvuKIglrx68MwOBqMGHhQsNkLjB5xtc/TGoEPs+MxjSyN/72qer2g97nzR641mOQ==,
+        integrity: sha512-iL2iSS0eDILMb9n5yKQoTBim9jMZ0Yrk8g0N9K7UzYyWnfIKzXBZD5ngpM37ZcL/cv0Mli8XtVMRYMQAfFpi5Q==,
       }
     dev: true
 
@@ -6118,6 +6121,15 @@ packages:
     hasBin: true
     dev: false
 
+  /mime@4.0.1:
+    resolution:
+      {
+        integrity: sha512-5lZ5tyrIfliMXzFtkYyekWbtRXObT9OWa8IwQ5uxTBDHucNNwniRqo0yInflj+iYi5CBa6qxadGzGarDfuEOxA==,
+      }
+    engines: { node: ">=16" }
+    hasBin: true
+    dev: true
+
   /min-indent@1.0.1:
     resolution:
       {
@@ -6756,10 +6768,10 @@ packages:
     engines: { node: ">= 0.8.0" }
     dev: true
 
-  /prettier-plugin-packagejson@2.4.13(prettier@3.2.5):
+  /prettier-plugin-packagejson@2.4.14(prettier@3.2.5):
     resolution:
       {
-        integrity: sha512-n64Y3E1iEese0RN0EmxM6E7dAiy47UPJOFyAjMNfZWPKQ1exwaaMTXEhK7vKIrbXLSmf2J9y4H5rnE1VII1vRg==,
+        integrity: sha512-sli+gV5tW7uxvzDZQscaBtSfbyAW2ToL6n/HGt51PipwX9vI7M54vefG0mKSfklVkT29TNGO6Mo6g8c6Z79gmw==,
       }
     peerDependencies:
       prettier: ">= 1.16.0"
@@ -6768,7 +6780,7 @@ packages:
         optional: true
     dependencies:
       prettier: 3.2.5
-      sort-package-json: 2.9.0
+      sort-package-json: 2.10.0
       synckit: 0.9.0
     dev: true
 
@@ -7466,10 +7478,10 @@ packages:
       }
     dev: true
 
-  /sort-package-json@2.9.0:
+  /sort-package-json@2.10.0:
     resolution:
       {
-        integrity: sha512-vlEd6i57Eb9+ruta1+hID+emmAmGzWKraEX1kk5LAQ0k1glgDHOENeieqzfir0m8MHcebzDH4FEwqjPnMEjy2g==,
+        integrity: sha512-MYecfvObMwJjjJskhxYfuOADkXp1ZMMnCFC8yhp+9HDsk7HhR336hd7eiBs96lTXfiqmUNI+WQCeCMRBhl251g==,
       }
     hasBin: true
     dependencies:
@@ -7479,6 +7491,7 @@ packages:
       git-hooks-list: 3.1.0
       globby: 13.2.2
       is-plain-obj: 4.1.0
+      semver: 7.6.0
       sort-object-keys: 1.1.3
     dev: true
 

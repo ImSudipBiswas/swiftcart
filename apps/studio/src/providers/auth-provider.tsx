@@ -5,12 +5,14 @@ import { useCurrentUser } from "@/hooks/queries";
 
 type AuthProviderState = {
   user: User | null;
+  isAdmin: boolean;
   isLoading: boolean;
   isAuthenticated: boolean;
 };
 
 const initialState: AuthProviderState = {
   user: null,
+  isAdmin: false,
   isLoading: true,
   isAuthenticated: false,
 };
@@ -23,7 +25,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const value: AuthProviderState = {
     isLoading,
     user: data?.user || null,
-    isAuthenticated: !!(data?.user && data?.user.role === "ADMIN"),
+    isAuthenticated: !!data?.user,
+    isAdmin: !!(data?.user && data?.user.role === "ADMIN"),
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

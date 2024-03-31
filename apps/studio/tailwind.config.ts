@@ -1,2 +1,2 @@
-import sharedConfig from "common/tailwind.config";
+import sharedConfig from "ui/tailwind.config";
 export default sharedConfig;

@@ -1,24 +1,17 @@
-import Logo from "common/assets/logo.svg";
-import { cn } from "common/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { signInSchema, type SignInSchema } from "common/lib/schema";
-import { useToast } from "common/hooks/use-toast";
-import { Input } from "common/components/input";
-import { Button } from "common/components/button";
-import { Loader2 } from "common/components/icons";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "common/components/form";
+import Logo from "ui/assets/logo.svg";
+import { cn } from "ui/lib/utils";
+import { useToast } from "ui/hooks/use-toast";
+import { Input } from "ui/components/input";
+import { Button } from "ui/components/button";
+import { Loader2 } from "ui/components/icons";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "ui/components/form";
 
 import { api } from "@/lib/utils";
+import { signInSchema, type SignInSchema } from "@/lib/schema";
 
 export default function SignInPage() {
   const { toast } = useToast();

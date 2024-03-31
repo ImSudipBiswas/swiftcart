@@ -1,24 +1,17 @@
-import Logo from "common/assets/logo.svg";
-import { cn } from "common/lib/utils";
-import { useForm } from "react-hook-form";
-import { Input } from "common/components/input";
 import { AxiosError } from "axios";
-import { useToast } from "common/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "common/components/button";
-import { Loader2 } from "common/components/icons";
-import { type SignUpSchema, signUpSchema } from "common/lib/schema";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  FormLabel,
-} from "common/components/form";
+import { useForm } from "react-hook-form";
+import Logo from "ui/assets/logo.svg";
+import { cn } from "ui/lib/utils";
+import { Input } from "ui/components/input";
+import { useToast } from "ui/hooks/use-toast";
+import { Button } from "ui/components/button";
+import { Loader2 } from "ui/components/icons";
+import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from "ui/components/form";
 
 import { api } from "@/lib/utils";
+import { type SignUpSchema, signUpSchema } from "@/lib/schema";
 
 export default function SignUpPage() {
   const navigate = useNavigate();

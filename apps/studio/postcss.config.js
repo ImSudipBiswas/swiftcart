@@ -1,2 +1,2 @@
-import postcss from "common/postcss.config";
+import postcss from "ui/postcss.config";
 export default postcss;

@@ -1,5 +1,5 @@
-import { cn } from "common/lib/utils";
-import { CheckCircle, CircleAlert } from "common/components/icons";
+import { cn } from "ui/lib/utils";
+import { CheckCircle, CircleAlert } from "ui/components/icons";
 import { Navigate, useSearchParams } from "react-router-dom";
 
 export default function MessagePage() {

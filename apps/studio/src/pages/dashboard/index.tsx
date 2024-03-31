@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "common/components/button";
+import { Button } from "ui/components/button";
 
 import { api } from "@/lib/utils";
 
