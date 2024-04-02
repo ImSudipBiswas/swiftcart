@@ -4,7 +4,7 @@ import { v2 as cloudinary, type UploadApiOptions } from "cloudinary";
 import { CLOUDINARY_CONFIG } from "./constants";
 
 type ResourceType = UploadApiOptions["resource_type"];
-type Folder = "profileImage";
+type Folder = "profileImage" | "categoryImage";
 
 type UploadToCloudinary = (
   filePath: string,

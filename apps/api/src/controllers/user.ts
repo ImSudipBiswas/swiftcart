@@ -20,17 +20,17 @@ export const getUserById: RequestHandler = handler(async (req, res) => {
 export const getUsers: RequestHandler = handler(async (req, res) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 5;
-  const whereQuery = req.query.q ? { name: { contains: req.query.q as string } } : {};
+  const where = req.query.q ? { name: { contains: req.query.q as string } } : {};
   const skip = (page - 1) * limit;
 
-  const documentCount = await db.user.count();
+  const documentCount = await db.user.count({ where });
   const isNext = documentCount > page * limit;
   const isPrevious = page > 1;
 
   const users = await db.user.findMany({
     skip,
     take: limit,
-    where: whereQuery,
+    where,
     orderBy: { createdAt: "desc" },
     select,
   });
